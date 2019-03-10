@@ -1,0 +1,112 @@
+@import '../styles/colors.scss';
+@import '../styles/easing.scss';
+@import '../styles/mediaQueries.scss';
+
+.calendar{
+  position: relative;
+  float: right;
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  background-color: $elijah__snow;
+  min-width: 280px;
+  color: $friki__ink;
+
+  * {
+  	transition: $quick;
+  }
+
+  .r-row{
+    display: grid;
+    grid: 1fr / repeat(7, 1fr);
+  }
+
+  .r-cell{
+    grid-row: 1 / 2;
+    background-color: $elijah__snow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .r-weekdays{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .r-weekdays .r-cell{
+      font-weight: bold;
+  }
+
+  @media #{$phone} {
+    float: none;
+    height: auto;
+    width: 100%;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    z-index: 100;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+    overflow: hidden;
+  }
+}
+
+
+.calendar-inner{
+  display: grid;
+  grid: 52px 25px auto / 1fr;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  @media #{$phone} {
+    height: 255px;
+    margin-top: 80px;
+  }
+}
+
+/* ===== CALENDAR DATES ===== */
+
+.calendar {
+  .r-dates {
+    display: grid;
+    grid: repeat(5, 1fr) / 1fr;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+
+    &.rows-6 {
+      grid: repeat(6, 1fr) / 1fr;
+    }
+
+    .r-cell {
+      position: relative;
+      background-color: $elijah__snow;
+
+      &.r-date{
+        cursor: pointer;
+        outline: none;
+
+        &.r-today{
+          background-color: $elijah__snow;
+        }
+
+        &:not(.r-past):not(.no-events):hover{
+          color: $elijah__snow;
+        }
+
+        &.r-selected{
+          background-color: $friki__ink;
+          color: $elijah__snow;
+        }
+
+        &.r-past{
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        &.no-events {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

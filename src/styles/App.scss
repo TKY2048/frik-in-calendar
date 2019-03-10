@@ -1,0 +1,1303 @@
+@import '../styles/colors.scss';
+@import '../styles/easing.scss';
+@import '../styles/mediaQueries.scss';
+
+.app * {
+  box-sizing: border-box;
+}
+
+.app {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* ========== TYPOGRAPHY ========== */
+.app {
+  font-family: 'Roboto', sans-serif;
+
+  .share-count,
+  .category {
+    text-transform: uppercase;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $elijah__snow;
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.app-header,
+.app-categories span,
+.navigation-panel,
+.post-author,
+.post-date,
+.share-module,
+.beta-version,
+.report-error,
+input,
+.custom-button,
+.month-list {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: normal;
+}
+
+.amplify-container,
+.amplify-container button {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: normal !important;
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 22px;
+  margin: 0;
+
+  .post-details & {
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
+h3 {
+  font-size: 20px;
+  margin: 0;
+
+  .post-details & {
+    font-size: 24px;
+    font-weight: bold;
+  }
+}
+
+/* ========== ELEMENTS ========== */
+main,
+main > section,
+.main-section {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.side-panel {
+  position: relative;
+  float: left;
+  height: 100%;
+  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
+  background-color: $elijah__snow;
+  transition: $quick;
+  overflow-y: auto;
+
+  &.events-panel {
+    float: right;
+    width: 50%;
+
+    .single-event {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+      background-color: $elijah__snow;
+      overflow: hidden;
+      z-index: 7000;
+    }
+  }
+
+  @media #{$phone} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    z-index: 7000;
+
+    &.events-panel {
+      grid-row: 2 / 3;
+      box-shadow: none;
+      width: 100vw;
+      z-index: 1;
+      overflow-y: auto;
+    }
+  }
+}
+
+.overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 7000;
+
+  &.disabled {
+    display: none;
+  }
+
+  #collection & {
+    position: fixed;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 300px;
+  padding: 25px;
+  transform: translate(-50%,-50%);
+  padding-bottom: 10px;
+  border-radius: 50px;
+  text-align: center;
+  background-color: $elijah__snow;
+  z-index: 8000;
+  transition: $quick;
+
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  input {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  @media #{$phone} {
+    max-width: 200px;
+  }
+}
+
+svg.icon {
+  height: 1em;
+  width: 1em;
+}
+
+.api-error {
+  padding: 25px;
+}
+
+.report-error {
+  display: block;
+
+  .icon-arrow {
+    vertical-align: middle;
+    height: 12px;
+    width: 12px;
+    margin-left: 0.5em;
+    transform: rotate(90deg);
+  }
+
+  .single-event & {
+    position: relative;
+    width: 100%;
+    padding: 5px 25px;
+    text-align: right;
+    font-weight: normal;
+    color: $friki__ink;
+    opacity: 0.8;
+
+    .icon-arrow {
+      display: inline-block;
+      position: relative;
+      top: 0;
+    }
+
+    &:after {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+
+/* ========== FORMS ========== */
+form {
+  label,
+  input {
+    display: block;
+    clear: both;
+  }
+
+  label {
+    content: "";
+    display: table;
+    table-layout: fixed;
+    position: relative;
+    width: 100%;
+  }
+
+  input {
+    float: right;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 15px;
+    padding: 5px;
+    text-align: right;
+    font-size: 17px;
+  }
+
+  .error-display {
+    height: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 14px;
+    color: red;
+    overflow: hidden;
+
+    &.active {
+      height: auto;
+      margin: 25px 0 0;
+    }
+  }
+
+  .footnote {
+    text-align: center;
+    font-size: 12px;
+
+    .custom-button {
+      margin-top: 10px;
+    }
+  }
+
+  &.sign-in-form,
+  &.sign-up-form,
+  &.confirm-sign-up-form {
+    margin-top: 25px;
+
+    .footnote {
+      width: 50%;
+      float: left;
+    }
+
+    label {
+      &:first-child {
+        margin-bottom: 15px;
+      }
+    }
+
+    input {
+      margin-top: 15px;
+    }
+  }
+}
+
+
+/* ========== AUTHENTICATOR ========== */
+.Section__container___1Gue_ {
+
+}
+
+.Toast__toast___2YWKB {
+  position: relative;
+  border-radius: 0;
+}
+
+
+/* ========== NAVIGATION PANEL ========== */
+.navigation-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  color: $friki__ink;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transition: $quick-delay;
+  z-index: 9999;
+
+  nav {
+    position: relative;
+    left: -30vw;
+    height: 100vh;
+    width: 30vw;
+    background-color: $elijah__snow;
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
+    color: $friki__ink;
+    transition: $fancy;
+    overflow-y: auto;
+    z-index: 8000;
+  }
+
+  .wrapper {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 30px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 25px;
+
+    .version {
+      display: block;
+      float: right;
+    }
+  }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transition: $quick;
+
+    nav {
+      left: 0;
+    }
+  }
+
+  &:not(.profile) {
+    .Form__formContainer___cu04J,
+    .amplify-form-container,
+    .amplify-nav-button,
+    .federated-buttons {
+      display: none !important;
+    }
+  }
+
+  @media #{$narrow} {
+    nav {
+      left: -50vw;
+      width: 42%;
+    }
+  }
+
+  @media #{$phone} {
+    nav {
+      left: -85vw;
+      width: 85vw;
+    }
+  }
+}
+
+
+/* ========== NEWS ========== */
+#news {
+  padding-top: 100px;
+
+  @media #{$phone} {
+    padding-top: 80px;
+  }
+}
+
+.news-archive {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  transition: $quick;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+  color: $elijah__snow;
+
+  .with-panel & {
+    left: 60%;
+    width: 40%;
+  }
+
+  .month-list {
+    position: relative;
+    height: 0;
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+    overflow: hidden;
+    transition: $quick;
+
+    span {
+      display: none;
+    }
+
+    h3 {
+      display: inline-block;
+
+      &:after {
+        content: ': ';
+      }
+    }
+
+    li {
+      display: inline-block;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+  }
+
+  &.expanded {
+    .month-list {
+      height: auto;
+      padding-bottom: 10px;
+    }
+  }
+
+  .loading & {
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  @media #{$phone} {
+    top: 80px;
+
+    .month-list {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+
+
+/* ========== SINGLE ITEM ========== */
+.single-place {
+  padding-bottom: 70px;
+
+  @media #{$phone} {
+    padding-bottom: 0;
+
+    .expanded & {
+      padding-bottom: 70px;
+    }
+  }
+}
+
+.post-panel {
+  float: left;
+  height: 100vh;
+  width: 60%;
+  margin-top: -100px;
+  margin-left: -60%;
+  padding-top: 100px;
+  box-shadow: none;
+  overflow-y: auto;
+
+  &.active {
+    margin-left: 0;
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
+  }
+
+  .item-controls {
+    display: none;
+  }
+
+  .share-module {
+    height: 43px !important;
+    padding-top: 5px !important;
+  }
+
+  .item-content {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  @media #{$phone} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 0;
+    padding-top: 80px;
+    margin-left: -100%;
+
+    &.active {
+      box-shadow: none;
+    }
+  }
+}
+
+
+/* ========== STROKE COLOR ========== */
+.category-icon .icon-0,
+.post-author .icon-0 {
+  fill: $friki__ink;
+}
+
+.app.dark {
+  .app-logo {
+    //fill: $elijah__snow;
+  }
+}
+
+/* ========== COLOR SCHEME: MAIN ========== */
+.app.main {
+  nav.controls,
+  .friki-marker,
+  .single-item-header .header-info,
+  .events .event-list h2,
+  .calendar-header .r-cell,
+  .post-item a:last-child,
+  .news-archive {
+    background-color: $friki__purple;
+  }
+
+  .friki-marker-container.active .friki-marker,
+  .favorites-link,
+  .parent-link,
+  .place-tabs h2,
+  .calendar-header .r-prev:hover,
+  .calendar-header .r-next:hover,
+  .calendar .r-date:not(.r-past):not(.no-events):hover,
+  .event-list a {
+    background-color: $friki__aqua;
+  }
+
+  .post-details a,
+  .post-details a:visited,
+  .place-list a:hover,
+  .event-list a:hover,
+  .navigation-row a:hover {
+    color: $friki__aqua;
+  }
+
+  .navigation-row a:hover .icon {
+    fill: $friki__aqua;
+  }
+
+  .amplify-button:hover {
+    background-color: $friki__aqua !important;
+  }
+}
+
+.icon-main {
+  background-color: $friki__purple;
+  fill: $friki__aqua;
+
+
+  .category-select & {
+    &:not(.active) {
+      background-color: transparent;
+
+      .icon-1 {
+        fill: $elijah__snow;
+      }
+    }
+  }
+}
+
+.avatar-main .icon-1 {
+  fill: $friki__aqua;
+}
+
+
+/* ========== COLOR SCHEME: OTAKU ========== */
+.app.otaku {
+  nav.controls,
+  .friki-marker,
+  .single-item-header .header-info,
+  .events .event-list h2,
+  .calendar-header .r-cell,
+  .post-item a:last-child,
+  .news-archive {
+    background-color: $otaku__red;
+  }
+
+  .friki-marker-container.active .friki-marker,
+  .favorites-link,
+  .parent-link,
+  .place-tabs h2,
+  .calendar-header .r-prev:hover,
+  .calendar-header .r-next:hover,
+  .calendar .r-date:not(.r-past):not(.no-events):hover,
+  .event-list a {
+    background-color: $otaku__pink;
+  }
+
+  .post-details a,
+  .post-details a:visited,
+  .place-list a:hover,
+  .event-list a:hover,
+  .navigation-row a:hover {
+    color: $otaku__pink;
+  }
+
+  .navigation-row a:hover .icon {
+    fill: $otaku__pink;
+  }
+
+  .amplify-button:hover {
+    background-color: $otaku__pink !important;
+  }
+}
+
+.icon-otaku {
+  background-color: $otaku__red;
+  fill: $otaku__pink;
+
+
+  .category-select & {
+    &:not(.active) {
+      background-color: transparent;
+
+      .icon-1 {
+        fill: $elijah__snow;
+      }
+    }
+  }
+}
+
+.day-categories  .otaku {
+  background-color: $otaku__red;
+}
+
+.day-categories  .main {
+  background-color: #990099;
+}
+
+.category.otaku {
+  color: $otaku__red;
+}
+
+.item-categories .icon-otaku {
+  background-color: $otaku__pink;
+
+  .icon-0 {
+    fill: $otaku__red;
+  }
+}
+
+
+/* ========== COLOR SCHEME: COMICS ========== */
+.app.comics {
+  nav.controls,
+  .friki-marker,
+  .single-item-header .header-info,
+  .events .event-list h2,
+  .calendar-header .r-cell,
+  .post-item a:last-child,
+  .news-archive {
+    background-color: $comics__orange;
+  }
+
+  .friki-marker-container.active .friki-marker,
+  .favorites-link,
+  .parent-link,
+  .place-tabs h2,
+  .calendar-header .r-prev:hover,
+  .calendar-header .r-next:hover,
+  .calendar .r-date:not(.r-past):not(.no-events):hover,
+  .event-list a {
+    background-color: $comics__yellow;
+  }
+
+  .post-details a,
+  .post-details a:visited,
+  .place-list a:hover,
+  .event-list a:hover,
+  .navigation-row a:hover {
+    color: $comics__yellow;
+  }
+
+  .navigation-row a:hover .icon {
+    fill: $comics__yellow;
+  }
+
+  .amplify-button:hover {
+    background-color: $comics__yellow !important;
+  }
+}
+
+.icon-comics {
+  background-color: $comics__orange;
+  fill: $comics__yellow;
+
+
+  .category-select & {
+    &:not(.active) {
+      background-color: transparent;
+
+      .icon-1 {
+        fill: $elijah__snow;
+      }
+    }
+  }
+}
+
+.category.comics {
+  color: $comics__orange;
+}
+
+.day-categories .comics  {
+  background-color: #ff6600;
+}
+
+.item-categories .icon-comics {
+  background-color: $comics__yellow;
+
+  .icon-0 {
+    fill: $comics__orange;
+  }
+}
+
+/* ========== COLOR SCHEME: GAMER ========== */
+.app.gamer {
+  nav.controls,
+  .friki-marker,
+  .single-item-header .header-info,
+  .events .event-list h2,
+  .calendar-header .r-cell,
+  .post-item a:last-child,
+  .news-archive {
+    background-color: $gamer__green;
+  }
+
+  .friki-marker-container.active .friki-marker,
+  .favorites-link,
+  .parent-link,
+  .place-tabs h2,
+  .calendar-header .r-prev:hover,
+  .calendar-header .r-next:hover,
+  .calendar .r-date:not(.r-past):not(.no-events):hover,
+  .event-list a {
+    background-color: $gamer__greenlight;
+  }
+
+  .post-details a,
+  .post-details a:visited,
+  .place-list a:hover,
+  .event-list a:hover,
+  .navigation-row a:hover {
+    color: $gamer__greenlight;
+  }
+
+  .navigation-row a:hover .icon {
+    fill: $gamer__greenlight;
+  }
+
+  .amplify-button:hover {
+    background-color: $gamer__greenlight !important;
+  }
+}
+
+.icon-gamer {
+  background-color: $gamer__green;
+  fill: $gamer__greenlight;
+
+  .category-select & {
+    &:not(.active) {
+      background-color: transparent;
+
+      .icon-1 {
+        fill: $elijah__snow;
+      }
+    }
+  }
+}
+
+.day-categories .gamer {
+  background-color: #00bb00;
+}
+
+.category.gamer  {
+  color: $gamer__green;
+}
+
+.item-categories .icon-gamer {
+  background-color: $gamer__greenlight;
+
+  .icon-0 {
+    fill: $gamer__green;
+  }
+}
+
+
+/* ========== COLOR SCHEME: SCI-FI ========== */
+.app.sci-fi-fantasia {
+  nav.controls,
+  .friki-marker,
+  .single-item-header .header-info,
+  .events .event-list h2,
+  .calendar-header .r-cell,
+  .post-item a:last-child,
+  .news-archive {
+    background-color: $scifi__blue;
+  }
+
+  .friki-marker-container.active .friki-marker,
+  .favorites-link,
+  .parent-link,
+  .place-tabs h2,
+  .calendar-header .r-prev:hover,
+  .calendar-header .r-next:hover,
+  .calendar .r-date:not(.r-past):not(.no-events):hover,
+  .event-list a {
+    background-color: $scifi__bluelight;
+  }
+
+  .post-details a,
+  .post-details a:visited,
+  .place-list a:hover,
+  .event-list a:hover,
+  .navigation-row a:hover {
+    color: $scifi__bluelight;
+  }
+
+  .navigation-row a:hover .icon {
+    fill: $scifi__bluelight;
+  }
+
+  .amplify-button:hover {
+    background-color: $scifi__bluelight !important;
+  }
+}
+
+.icon-sci-fi-fantasia {
+  background-color: $scifi__blue;
+  fill: $scifi__bluelight;
+
+  .category-select & {
+    &:not(.active) {
+      background-color: transparent;
+
+      .icon-1 {
+        fill: $elijah__snow;
+      }
+    }
+  }
+}
+
+.category.sci-fi-fantasia {
+  color: $scifi__blue;
+}
+
+.day-categories .sci-fi-fantasia {
+  background-color: #0000ee;
+}
+
+.item-categories .icon-sci-fi-fantasia {
+  background-color: $scifi__bluelight;
+
+  .icon-0 {
+    fill: $scifi__blue;
+  }
+}
+
+/* ========== COLOR SCHEME: TOYS ========== */
+.app.coleccionismo {
+  nav.controls,
+  .friki-marker,
+  .single-item-header .header-info,
+  .events .event-list h2,
+  .calendar-header .r-cell,
+  .post-item a:last-child,
+  .news-archive {
+    background-color: $toys__cepia;
+  }
+
+  .friki-marker-container.active .friki-marker,
+  .favorites-link,
+  .parent-link,
+  .place-tabs h2,
+  .calendar-header .r-prev:hover,
+  .calendar-header .r-next:hover,
+  .calendar .r-date:not(.r-past):not(.no-events):hover,
+  .event-list a {
+    background-color: $toys__gray;
+  }
+
+  .post-details a,
+  .post-details a:visited,
+  .place-list a:hover,
+  .event-list a:hover,
+  .navigation-row a:hover {
+    color: $toys__gray;
+  }
+
+  .navigation-row a:hover .icon {
+    fill: $toys__gray;
+  }
+
+  .amplify-button:hover {
+    background-color: $toys__gray !important;
+  }
+}
+
+.icon-coleccionismo {
+  background-color: $toys__cepia;
+  fill: $toys__gray;
+
+  .category-select & {
+    &:not(.active) {
+      background-color: transparent;
+
+      .icon-1 {
+        fill: $elijah__snow;
+      }
+    }
+  }
+}
+
+.category.coleccionismo {
+  color: $toys__cepia;
+}
+
+.day-categories .coleccionismo {
+  background-color: $toys__cepia;
+}
+
+.item-categories .icon-coleccionismo {
+  background-color: $toys__gray;
+
+  .icon-0 {
+    fill: $toys__cepia;
+  }
+}
+
+/* ========== COLOR SCHEME: TABLETOP ========== */
+.app.tabletop {
+  nav.controls,
+  .friki-marker,
+  .single-item-header .header-info,
+  .events .event-list h2,
+  .calendar-header .r-cell,
+  .post-item a:last-child,
+  .news-archive {
+    background-color: $tabletop__yellow;
+  }
+
+  .friki-marker-container.active .friki-marker,
+  .favorites-link,
+  .parent-link,
+  .place-tabs h2,
+  .calendar-header .r-prev:hover,
+  .calendar-header .r-next:hover,
+  .calendar .r-date:not(.r-past):not(.no-events):hover,
+  .event-list a {
+    background-color: $tabletop__aqua;
+  }
+
+  .post-details a,
+  .post-details a:visited,
+  .place-list a:hover,
+  .event-list a:hover,
+  .navigation-row a:hover {
+    color: $tabletop__aqua;
+  }
+
+  .navigation-row a:hover .icon {
+    fill: $tabletop__aqua;
+  }
+
+  .amplify-button:hover {
+    background-color: $tabletop__aqua !important;
+  }
+
+  .calendar-header,
+  .news-archive,
+  .post-item a,
+  .header-info h1,
+  .friki-marker {
+    color: $friki__ink;
+  }
+
+  .calendar-header .r-title svg,
+  .calendar-header .r-prev svg,
+  .calendar-header .r-next svg {
+    fill: $friki__ink;
+  }
+}
+
+.icon-tabletop {
+  background-color: $tabletop__yellow;
+  fill: $tabletop__aqua;
+
+  .category-select & {
+    &:not(.active) {
+      background-color: transparent;
+
+      .icon-1 {
+        fill: $elijah__snow;
+      }
+    }
+  }
+}
+
+.category.tabletop {
+  color: $tabletop__yellow;
+}
+
+.day-categories .tabletop {
+  background-color: $tabletop__yellow;
+}
+
+.item-categories .icon-tabletop {
+  background-color: $tabletop__aqua;
+
+  .icon-0 {
+    fill: $tabletop__yellow;
+  }
+}
+
+
+/* ========== COLOR SCHEME: TERROR ========== */
+.app.terror {
+  nav.controls,
+  .friki-marker,
+  .single-item-header .header-info,
+  .events .event-list h2,
+  .calendar-header .r-cell,
+  .post-item a:last-child,
+  .news-archive {
+    background-color: $horror__black;
+  }
+
+  .friki-marker-container.active .friki-marker,
+  .favorites-link,
+  .parent-link,
+  .place-tabs h2,
+  .calendar-header .r-prev:hover,
+  .calendar-header .r-next:hover,
+  .calendar .r-date:not(.r-past):not(.no-events):hover,
+  .event-list a {
+    background-color: $horror__pink;
+  }
+
+  .post-details a,
+  .post-details a:visited,
+  .place-list a:hover,
+  .event-list a:hover,
+  .navigation-row a:hover {
+    color: $horror__pink;
+  }
+
+  .navigation-row a:hover .icon {
+    fill: $horror__pink;
+  }
+
+  .amplify-button:hover {
+    background-color: $horror__pink !important;
+  }
+}
+
+.icon-terror {
+  background-color: $horror__black;
+  fill: $horror__pink;
+
+  .category-select & {
+    &:not(.active) {
+      background-color: transparent;
+
+      .icon-1 {
+        fill: $elijah__snow;
+      }
+    }
+  }
+}
+
+.category.terror {
+  color: $horror__black;
+}
+
+.day-categories .terror {
+  background-color: $horror__black;
+}
+
+.item-categories .icon-terror {
+  background-color: $horror__pink;
+
+  .icon-0 {
+    fill: $horror__black;
+  }
+}
+
+
+/* ========== COLOR SCHEME: LA MOLE ========== */
+.app.la-mole {
+  nav.controls,
+  .friki-marker,
+  .single-item-header .header-info,
+  .events .event-list h2,
+  .calendar-header .r-cell,
+  .post-item a:last-child,
+  .news-archive {
+    background-color: $starless;
+  }
+
+  .friki-marker-container.active .friki-marker,
+  .favorites-link,
+  .parent-link,
+  .place-tabs h2,
+  .calendar-header .r-prev:hover,
+  .calendar-header .r-next:hover,
+  .calendar .r-date:not(.r-past):not(.no-events):hover,
+  .event-list a {
+    background-color: $lamole__blue;
+  }
+
+  .post-details a,
+  .post-details a:visited,
+  .place-list a:hover,
+  .event-list a:hover,
+  .navigation-row a:hover {
+    color: $lamole__blue;
+  }
+
+  .navigation-row a:hover .icon {
+    fill: $lamole__blue;
+  }
+
+  .amplify-button:hover {
+    background-color: $lamole__blue !important;
+  }
+}
+
+.icon-la-mole {
+  background-color: $starless;
+  fill: $lamole__blue;
+
+  .category-select & {
+    &:not(.active) {
+      background-color: transparent;
+
+      .icon-1 {
+        fill: $elijah__snow;
+      }
+    }
+  }
+}
+
+.category.la-mole {
+  color: $starless;
+}
+
+.day-categories .la-mole {
+  background-color: $starless;
+}
+
+.item-categories .icon-la-mole {
+  background-color: $lamole__blue;
+
+  .icon-0 {
+    fill: $starless;
+  }
+}
+
+
+/* ========== LAYOUT: DESKTOP ========== */
+
+/* EVENTS */
+.events {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 132px 1fr;
+  padding-top: 0;
+  transition: $quick;
+
+  .day-categories {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    padding: 0;
+    text-align: center;
+    pointer-events: none;
+
+    span {
+      display: inline-block;
+      height: 10px;
+      width: 10px;
+      margin-right: 5px;
+      border-radius: 100%;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    @media #{$phone} {
+      margin-top: -2px;
+
+      span {
+        height: 5px;
+        width: 5px;
+        margin-right: 2px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Collection */
+.avatar-collection {
+  padding-top: 100px;
+  overflow-y: auto;
+}
+
+
+/* ========== LAYOUT: PHONE ========== */
+@media #{$phone} {
+  .places {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-rows: auto;
+    transition: $quick;
+
+    &.with-place {
+      grid-template-rows: 1fr auto;
+
+      &.expanded {
+        grid-template-rows: 0 1fr;
+      }
+    }
+
+    &.favorites {
+      grid-template-rows: 1fr 1fr;
+    }
+  }
+
+  .events {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 132px 1fr;
+    padding-top: 0;
+    transition: $quick;
+
+    &.expanded {
+      grid-template-rows: 335px 1fr;
+    }
+  }
+}

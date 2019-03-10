@@ -1,0 +1,113 @@
+.calendar-header {
+  color: #ffffff;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.calendar-header .r-title {
+  grid-column: 2/7;
+  pointer-events: none;
+}
+.calendar-header .r-title h2 {
+  font-size: 18px;
+}
+.calendar-header .r-title svg {
+  display: none;
+  vertical-align: top;
+  height: 14px;
+  width: 14px;
+  margin-top: 0.2em;
+  margin-left: 0.5em;
+  transform: rotate(180deg);
+  fill: #ffffff;
+  transition: all 0.3s ease;
+}
+.expanded .calendar-header .r-title svg {
+  margin-top: 5px;
+  transform: none;
+}
+.calendar-header .r-prev,
+.calendar-header .r-next {
+  height: 100%;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+.calendar-header .r-prev svg,
+.calendar-header .r-next svg {
+  display: block;
+  height: 18px;
+  width: 18px;
+  fill: #ffffff;
+}
+.calendar-header .r-prev.disabled,
+.calendar-header .r-next.disabled {
+  pointer-events: none;
+}
+.calendar-header .r-prev.disabled svg,
+.calendar-header .r-next.disabled svg {
+  opacity: 0;
+  visibility: hidden;
+}
+.calendar-header .r-prev {
+  grid-column: 1/2;
+}
+.calendar-header .r-prev svg {
+  transform: rotate(-90deg);
+}
+.calendar-header .r-next {
+  grid-column: 7/8;
+}
+.calendar-header .r-next svg {
+  transform: rotate(90deg);
+}
+#news .calendar-header {
+  position: relative;
+  text-align: center;
+  font-size: 14px;
+}
+#news .calendar-header .r-title {
+  padding: 15px 50px;
+  pointer-events: auto;
+}
+#news .calendar-header .r-title svg {
+  display: inline-block;
+  cursor: pointer;
+}
+#news .calendar-header .r-prev,
+#news .calendar-header .r-next {
+  position: absolute;
+  top: 0;
+  width: 120px;
+}
+#news .calendar-header .r-prev svg,
+#news .calendar-header .r-next svg {
+  margin: 0 auto;
+  height: 100%;
+}
+#news .calendar-header .r-prev.disabled,
+#news .calendar-header .r-next.disabled {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#news .calendar-header .r-prev {
+  left: 0;
+}
+#news .calendar-header .r-next {
+  right: 0;
+}
+@media screen and (max-width: 640px) {
+  .calendar-header .r-title {
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  .calendar-header .r-title svg {
+    display: inline-block;
+  }
+  #news .calendar-header .r-prev,
+#news .calendar-header .r-next {
+    width: 60px;
+  }
+}
+
+/*# sourceMappingURL=CalendarHeader.css.map */

@@ -1,0 +1,134 @@
+.app-categories {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2; }
+.app-categories:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease; }
+.app-categories .buttons-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 90px;
+  width: 100px;
+  padding-top: 15px;
+  padding-right: 25px;
+  transition: all 0.3s ease;
+  z-index: 9999; }
+.app-categories .category-toggle,
+.app-categories .category-btn {
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  height: 75px;
+  width: 75px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent; }
+.app-categories .category-toggle:focus,
+.app-categories .category-btn:focus {
+  outline: none; }
+.app-categories .category-toggle {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible; }
+.app-categories .category-btn {
+  transition: all 0.3s ease;
+  transform: scale(0.9); }
+.app-categories .category-btn .category-icon {
+  width: 70px;
+  height: 70px; }
+.app-categories .category-btn.selected {
+  z-index: 9;
+  transform: none; }
+.app-categories .category-btn.selected .category-icon {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+.app-categories .category-btn span {
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 5px;
+  width: 70px;
+  margin-top: 0.5em;
+  font-size: 16px;
+  color: #ffffff;
+  text-shadow: 0px 3px 6px rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; }
+.app-categories .category-btn.coleccionismo-btn span {
+  white-space: nowrap;
+  transform: translateX(-12px); }
+.app-categories .main-btn {
+  z-index: 2; }
+.app-categories .la-mole-btn > div {
+  padding: 15px; }
+.app-categories.active {
+  height: 100vh;
+  width: 100%;
+  max-width: 640px; }
+.app-categories.active .buttons-container {
+  height: 100%;
+  width: 100%;
+  padding-top: 150px; }
+.app-categories.active:before {
+  opacity: 1;
+  visibility: visible; }
+.app-categories.active .category-toggle {
+  opacity: 0;
+  visibility: hidden; }
+.app-categories.active .category-btn {
+  transform: none; }
+.app-categories.active .category-btn:not(.selected) {
+  position: relative;
+  float: left;
+  top: 0;
+  right: 0;
+  width: 33.33%;
+  margin-bottom: 55px;
+  padding-right: 5px; }
+.app-categories.active .category-btn:not(.selected) .category-icon {
+  float: right; }
+.app-categories.active .category-btn span {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s ease 0.5s; }
+@media screen and (max-width: 640px) {
+  .app-categories .buttons-container {
+    padding-right: 15px; }
+  .app-categories .category-toggle,
+  .app-categories .category-btn {
+    height: 55px;
+    width: 55px;
+    right: 15px; }
+  .app-categories .category-btn .category-icon {
+    height: 50px;
+    width: 50px; }
+  .app-categories .category-btn span {
+    right: 5px;
+    width: 50px; }
+  .app-categories .category-btn.coleccionismo-btn span, .app-categories .category-btn.sci-fi-fantasia-btn span {
+    white-space: normal;
+    transform: none;
+    width: 65px;
+    right: 0px; }
+  .app-categories.active {
+    max-width: none; } }

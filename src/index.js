@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './styles/index.css';
+import WebFont from 'webfontloader';
 import * as serviceWorker from './serviceWorker';
+import App from "./containers/App";
+
+WebFont.load({
+	google: {
+		families: ['Roboto:400,700', 'Rajdhani:400,700', 'sans-serif']
+	}
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
