@@ -1,89 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f77d30b4-80ed-4a19-9143-e1651756d7c4" name="Default Changelist" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Calendar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CalendarHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Categories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CategoryIcon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/EventIcon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/EventList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Logo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/CategoriesNav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconAcademic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconAcademic_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconAddress.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconArrow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconCalendar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconClose.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconComics.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconComics_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconCommercial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconCommercial_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconCultural.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconCultural_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconDirections.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconEvents.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconFavorite.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconFestival.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconFestival_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconFloor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconGamer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconGamer_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconHorror.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconHour.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconLaMole.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconLink.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconLocation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconMain.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconMain_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconMall.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconMall_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconMovies.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconMovies_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconMusic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconMusic_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconNews.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconOtaku.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconOtaku_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconPlaces.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconReatilSpace.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconRecreational.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconRecreational_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconRestaurant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconRestaurant_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconSciFi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconSciFi_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconSearch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconShare.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconStore_String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconTabletop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconToys.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/IconView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/categories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/navigation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/App.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Calendar.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/CalendarHeader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Categories.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/CategoryIcon.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Header.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/_colors.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/_easing.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/_mediaQueries.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/appConstants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/sortEvents.js" afterDir="false" />
+    <list default="true" id="f77d30b4-80ed-4a19-9143-e1651756d7c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/App.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -96,13 +19,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="96" column="13" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+            <state relative-caret-position="391">
+              <caret line="168" column="66" selection-start-line="168" selection-start-column="66" selection-end-line="168" selection-end-column="66" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#1069#1736#0" />
+                <element signature="e#2453#4756#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/CalendarDates.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,43 +48,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Calendar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1357">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="582">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/appConstants.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1852">
-              <caret line="20" column="71" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Header.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="36" column="168" selection-start-line="36" selection-start-column="168" selection-end-line="36" selection-end-column="168" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/CalendarDates.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -165,36 +69,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>days</find>
-      <find>daysInMonth</find>
-      <find>|</find>
-      <find>props</find>
-      <find>daysinmon</find>
-      <find>daysIn</find>
-      <find>console.log</find>
-      <find>console</find>
-      <find>dayCategories</find>
-      <find>event-list tab-conten</find>
-      <find>event-list a</find>
-      <find>ul</find>
-      <find>onDateClick</find>
-      <find>getdayevet</find>
-      <find>props.eve</find>
-      <find>getd</find>
-      <find>conso</find>
-      <find>r-dates</find>
-      <find>eventsStartDay</find>
-      <find>gete</find>
-      <find>daycat</find>
-      <find>day</find>
       <find>month</find>
-      <find>filter</find>
       <find>span</find>
       <find>.dayca</find>
       <find>has-events</find>
       <find>catego</find>
       <find>params</find>
       <find>slug</find>
+      <find>componentdi</find>
+      <find>montheve</find>
+      <find>initial</find>
+      <find>firstof</find>
+      <find>firstofmonth</find>
+      <find>no ha</find>
+      <find>state</find>
+      <find>logda</find>
+      <find>dayhasevent</find>
+      <find>body</find>
+      <find>fil</find>
+      <find>sortEvents</find>
+      <find>push</find>
+      <find>add</find>
+      <find>selectedDate</find>
+      <find>filter</find>
+      <find>getday</find>
+      <find>console</find>
+      <find>console.l</find>
+      <find>console.log</find>
+      <find>conso</find>
+      <find>handleDay</find>
+      <find>co</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -229,19 +133,19 @@
         <option value="$PROJECT_DIR$/src/styles/Calendar.css" />
         <option value="$PROJECT_DIR$/src/styles/CalendarHeader.scss" />
         <option value="$PROJECT_DIR$/src/styles/Calendar.scss" />
-        <option value="$PROJECT_DIR$/src/containers/CalendarDates.js" />
-        <option value="$PROJECT_DIR$/src/styles/App.scss" />
         <option value="$PROJECT_DIR$/src/modules/routes.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Header.js" />
         <option value="$PROJECT_DIR$/src/components/CalendarHeader.js" />
+        <option value="$PROJECT_DIR$/src/components/Header.js" />
+        <option value="$PROJECT_DIR$/src/styles/App.scss" />
+        <option value="$PROJECT_DIR$/src/containers/CalendarDates.js" />
         <option value="$PROJECT_DIR$/src/components/Calendar.js" />
         <option value="$PROJECT_DIR$/src/containers/App.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="135" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1066" />
@@ -387,12 +291,21 @@
       <workItem from="1552019901966" duration="5639000" />
       <workItem from="1552075613401" duration="40000" />
       <workItem from="1552076321781" duration="4227000" />
-      <workItem from="1552241152657" duration="2877000" />
+      <workItem from="1552241152657" duration="17546000" />
+      <workItem from="1552332463805" duration="12136000" />
     </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <created>1552251624554</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1552251624554</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97762000" />
+    <option name="totallyTimeSpent" value="124567000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -407,13 +320,13 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12381454" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12381454" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3296582" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49947312" visible="true" weight="0.11356119" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947312" visible="true" weight="0.11356119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -543,9 +456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/index.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/Header.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -629,16 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/EventList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1196">
-          <caret line="91" column="70" selection-start-line="91" selection-start-column="70" selection-end-line="91" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Categories.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="715">
@@ -677,13 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/App.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2911">
-          <caret line="678" column="1" selection-start-line="678" selection-start-column="1" selection-end-line="678" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/routes.js" />
     <entry file="file://$PROJECT_DIR$/src/modules/routes.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -714,8 +607,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="36" column="168" selection-start-line="36" selection-start-column="168" selection-end-line="36" selection-end-column="168" />
+        <state relative-caret-position="69">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/EventList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" selection-start-line="17" selection-end-line="19" selection-end-column="5" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -724,7 +624,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CalendarHeader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
+        <state relative-caret-position="759">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -732,20 +632,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Calendar.js">
+    <entry file="file://$PROJECT_DIR$/src/styles/index.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/App.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1357">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="245">
+          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/App.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Calendar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="96" column="13" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
+        <state relative-caret-position="582">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -754,10 +654,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/CalendarDates.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        <state relative-caret-position="22">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="168" column="66" selection-start-line="168" selection-start-column="66" selection-end-line="168" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#1069#1736#0" />
+            <element signature="e#2453#4756#0" />
           </folding>
         </state>
       </provider>

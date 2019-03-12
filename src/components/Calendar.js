@@ -27,14 +27,12 @@ const Calendar = (props) => {
 			<div className="calendar-inner">
 				<CalendarHeader
 					title={calendarTitle}
-					onMonthChange={props.onMonthChange}
 					onHeaderClick={props.onHeaderClick}
                               onDayChange={props.onDayChange}
 					first={today.getTime() === props.selectedDate.getTime()}
 					last={false}
 				/>
-
-				{props.toggleCalendar && <CalendarDates
+				<CalendarDates
 					category={props.category}
 					year={props.year}
 					month={props.month}
@@ -43,7 +41,7 @@ const Calendar = (props) => {
 					onDateClick={props.onDateClick}
 					daysInMonth={props.daysInMonth}
 					events={props.events}
-				/>}
+				/>
 
 				<div className="r-row r-weekdays">
 					{cells}
@@ -57,7 +55,7 @@ Calendar.propTypes = {
 	year: PropTypes.number.isRequired,
 	month: PropTypes.number.isRequired,
 	onDateClick: PropTypes.func.isRequired,
-	onHeaderClick: PropTypes.func.isRequired
+	onHeaderClick: PropTypes.func.isRequired,
 };
 
 export default Calendar;

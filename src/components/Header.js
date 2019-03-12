@@ -33,8 +33,6 @@ const Header = (props) => {
 					{navButton}
 				</a>
 				<h1 className="page-title">{headerTitle}</h1>
-				<CategoriesNav
-					active={props.catNavActive} currentCategory={props.currentCategory} initialCategory={props.initialCategory} setCategory={props.setCategory} toggleCategories={props.toggleCategories}/>
 			</header>
 		);
 };

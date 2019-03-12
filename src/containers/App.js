@@ -28,14 +28,16 @@ class App extends React.Component
 			dayEvents: [],
 			selectedDate: new Date(year, month, day),
 			currentCategory: appConstants.categories[0],
-			initialCategory: 'main',
 			catNavActive: false,
 			firstOfMonth: new Date(year,month,1),
 			daysInMonth: new Date(year, month + 1, 0 ).getDate(),
+			lastOfMonth: new Date(year, month + 1, 0 ),
+			daysWithEvents: new Set(),
+			dataIsLoaded: false,
+			daysWithEventsIndex: 0
 		};
 	}
-
-	slugToCategory = (slug) => {
+	slugToCategory = slug => {
 		let category;
 
 		// TODO: Do this well. Use a mapping function maybe
@@ -67,6 +69,24 @@ class App extends React.Component
 		return category;
 	};
 
+	getDaysWithEvents = () => {
+		let daysWithEvents = [];
+		let eventsOfCategory = this.state.events.filter(event => event.categories.find(cat => cat === this.state.category.slug));
+		eventsOfCategory.forEach( event => daysWithEvents.push(new Date (event.start_date.replace(/-/g, '/'))));
+		let sortedDates = daysWithEvents.sort(function (date1, date2) {
+			if (date1 > date2) return 1;
+			if (date1 < date2) return -1;
+			return 0;
+		});
+		let sortedDatesSet = [...new Set(sortedDates)];
+		this.setState(
+			{
+				daysWithEvents: sortedDatesSet,
+				selectedDate: sortedDates[0],
+			}
+		);
+	};
+
 	componentDidMount()
 	{
 		let params = new URLSearchParams(window.location.search);
@@ -81,17 +101,14 @@ class App extends React.Component
 		let dataURL = "https://frik-in.mx/wp-json/frik-in/v1/events";
 		fetch(dataURL)
 			.then(res => res.json())
-			.then(res =>{
-				this.setState(
-					{
-						events: res
-					});
-			});
+				.then(res => this.setState({events: res}))
+					.then(() => this.setState({dataIsLoaded: true}))
+						.then(() => {this.getDaysWithEvents()});
 	}
 
 	componentDidUpdate(prevProps, prevState)
 	{
-		if(this.state.events !== prevState.events || this.state.selectedDate !== prevState.selectedDate || this.state.category !== prevState.category)
+		if (this.state.events !== prevState.events || this.state.selectedDate !== prevState.selectedDate)
 		{
 			this.filterEvents();
 		}
@@ -141,26 +158,43 @@ class App extends React.Component
 
 	handleDayChange = (direction) => {
 		let nextSelectedDay;
-
+		let index;
 		if (direction === 'next')
 		{
-			nextSelectedDay = new Date(this.state.selectedDate.getTime() + (24 * 60 * 60 * 1000));
-			//TODO: Skip eventless days
-			// Stupid way to do this:
-
-			this.setState({month: nextSelectedDay.getMonth()})
+			if (this.state.daysWithEventsIndex === (Array.from(this.state.daysWithEvents).length) - 1)
+			{
+				index = this.state.daysWithEventsIndex;
+			}
+			else {
+				index = this.state.daysWithEventsIndex + 1;
+			}
+			nextSelectedDay = this.state.daysWithEvents[index];
+			this.setState({daysWithEventsIndex: index});
 		}else{	// direction === 'prev'
-			nextSelectedDay = new Date(this.state.selectedDate.getTime() - (24 * 60 * 60 * 1000));
-			//TODO: Skip eventless days
-			this.setState({month: nextSelectedDay.getMonth()})
+			if (this.state.daysWithEventsIndex === 0)
+			{
+				index = this.state.daysWithEvents;
+			}
+			else {
+				index = this.state.daysWithEventsIndex - 1;
+			}
+
+			nextSelectedDay = this.state.daysWithEvents[index];
+			this.setState({daysWithEventsIndex: index})
 		}
-		let	daysInMonth= new Date(nextSelectedDay.getFullYear(), nextSelectedDay.getMonth() +1, 0 ).getDate();
-			this.setState(
+
+		let daysInMonth = new Date(nextSelectedDay.getFullYear(), nextSelectedDay.getMonth() +1, 0 ).getDate();
+		let firstOfMonth =  new Date(nextSelectedDay.getFullYear(), nextSelectedDay.getMonth(),1);
+		let lastOfMonth = new Date(nextSelectedDay.getFullYear(), nextSelectedDay.getMonth() + 1, 0);
+		this.setState(
 			{
 				selectedDate: nextSelectedDay,
 				daysInMonth: daysInMonth,
+				firstOfMonth: firstOfMonth,
+				lastOfMonth: lastOfMonth,
 				}
-		)
+		);
+
 	};
 
 	handleCalendarHeaderClick = () => {
@@ -169,40 +203,27 @@ class App extends React.Component
 		}));
 	};
 
-	toggleCategories = () => {
-		this.setState(prevState => ({
-			catNavActive: !prevState.catNavActive
-		}));
-	};
-
-	setCategory = (category) => {
-		this.setState(
-			{
-					currentCategory: category,
-					category: category,
-				}
-			)
-	};
-
 	render() {
+		console.log(this.state.daysWithEventsIndex);
+		console.log(Array.from(this.state.daysWithEvents).length);
 		let appClassName ='app ' + this.state.currentCategory.slug + ' with-events' ;
 		let className;
 		this.state.toggleCalendar ? className = "events expanded" : className="events";
+		let dataIsLoaded = this.state.dataIsLoaded;
 		return(
 				<div className={appClassName}>
 						<div className={className}>
-							<Header
+
+							{dataIsLoaded&&	<Header
 								toggleCategories={this.toggleCategories}
 								setCategory={this.setCategory}
 								currentCategory={this.state.currentCategory}
-								initialCategory={this.state.initialCategory}
 								catNavActive={this.state.catNavActive}
-								/>
-							<Calendar
+								/>}
+							{dataIsLoaded && <Calendar
 								year={this.state.year}
 								month={this.state.month}
 								onDateClick={this.handleDateClick}
-								onMonthChange={this.handleMonthChange}
 								onHeaderClick={this.handleCalendarHeaderClick}
 								selectedDate={this.state.selectedDate}
 								onDayChange={this.handleDayChange}
@@ -211,12 +232,16 @@ class App extends React.Component
 								events={this.state.events}
 								firstOfMonth={this.state.firstOfMonth}
 								daysInMonth={this.state.daysInMonth}
-							/>
+							/>}
 
-						<EventList
+							{dataIsLoaded && <EventList
 							events={this.state.dayEvents}
 							mode="days"
-						/>
+						/>}
+
+
+
+
 					</div>
 				</div>
 		);
