@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from '../components/Logo';
 import '../styles/Header.css'
 import CategoriesNav from "../containers/CategoriesNav";
+import appConstants from "../utils/appConstants";
 
 const Header = (props) => {
 
@@ -32,6 +33,7 @@ const Header = (props) => {
 				<a href="https://www.frik-in.com" className="logo-button"  style={{ backgroundColor: navButtonColor }}>
 					{navButton}
 				</a>
+				<CategoriesNav initialCategory={props.category.slug} currentCategory={props.category} active={false} toggleCategories={()=>null} setCategory={()=>null}/>
 				<h1 className="page-title">{headerTitle}</h1>
 			</header>
 		);

@@ -4,7 +4,9 @@ import { sortEvents} from '../utils/sortEvents.js';
 import Header from '../components/Header'
 import '../styles/App.css';
 import Calendar from "../components/Calendar";
-import EventList from '../components/EventList'
+import EventList from '../components/EventList';
+
+const today = new Date(new Date().setHours(0,0,0,0));
 
 /**
  *  Main App Container
@@ -24,15 +26,15 @@ class App extends React.Component
 			date: new Date().getDate(),
 			events: [],
 			toggleCalendar: false,
-			category: appConstants.categories[0],
+			category: appConstants.categories[0],//should be slug?
 			dayEvents: [],
 			selectedDate: new Date(year, month, day),
 			currentCategory: appConstants.categories[0],
 			catNavActive: false,
 			firstOfMonth: new Date(year,month,1),
-			daysInMonth: new Date(year, month + 1, 0 ).getDate(),
-			lastOfMonth: new Date(year, month + 1, 0 ),
-			daysWithEvents: new Set(),
+			daysInMonth: new Date(year, month + 1 , 0 ).getDate(),
+			lastOfMonth: new Date(year, month, 0 ),
+			daysWithEvents: [],
 			dataIsLoaded: false,
 			daysWithEventsIndex: 0
 		};
@@ -64,25 +66,78 @@ class App extends React.Component
 				category = appConstants.categories[6];
 				break;
 			default:
-				category = null;
+				category = appConstants.categories[0];
 		}
 		return category;
 	};
 
-	getDaysWithEvents = () => {
-		let daysWithEvents = [];
-		let eventsOfCategory = this.state.events.filter(event => event.categories.find(cat => cat === this.state.category.slug));
-		eventsOfCategory.forEach( event => daysWithEvents.push(new Date (event.start_date.replace(/-/g, '/'))));
-		let sortedDates = daysWithEvents.sort(function (date1, date2) {
-			if (date1 > date2) return 1;
-			if (date1 < date2) return -1;
-			return 0;
-		});
-		let sortedDatesSet = [...new Set(sortedDates)];
+	toggleCategories = () => {
+		this.setState(prevState => ({
+			catNavActive: !prevState.catNavActive
+		}));
+	};
+
+	setCategory = (category) => {
 		this.setState(
 			{
-				daysWithEvents: sortedDatesSet,
-				selectedDate: sortedDates[0],
+				currentCategory: category,
+				category: category,
+			}
+		)
+	};
+
+	getDaysWithEvents = () => {
+		let daysWithEvents = [];
+		let sortedDates;
+
+		if(this.state.category.slug === 'main')
+		{
+			this.state.events.forEach( event =>
+				{
+					if (new Date(event.start_date.replace(/-/g, '/')) >= today)
+					{
+						if (!daysWithEvents.includes(new Date (event.start_date.replace(/-/g, '/'))))
+						{
+							daysWithEvents.push(new Date (event.start_date.replace(/-/g, '/')));
+						}
+					}
+				}
+			);
+		}else {
+
+			let eventsOfCategory = this.state.events.filter(event => event.categories.find(cat => cat === this.state.category.slug));
+			eventsOfCategory.forEach( event =>
+			{
+				if (new Date(event.start_date.replace(/-/g, '/')) >= today)
+				{
+					if (!daysWithEvents.includes(new Date (event.start_date.replace(/-/g, '/'))))
+					{
+						daysWithEvents.push(new Date (event.start_date.replace(/-/g, '/')));
+					}
+				}
+			});
+		}
+			sortedDates = daysWithEvents.sort(function (date1, date2) {
+				if (date1 > date2) return 1;
+				if (date1 < date2) return -1;
+				return 0;
+			});
+
+		function removeDups(names) {
+			let unique = {};
+			names.forEach(function(i) {
+				if(!unique[i]) {
+					unique[i] = true;
+				}
+			});
+			return Object.keys(unique);
+		}
+
+		let finalArray = removeDups(sortedDates);
+		this.setState(
+			{
+				daysWithEvents: finalArray,
+				selectedDate: new Date(finalArray[0]),
 			}
 		);
 	};
@@ -132,8 +187,6 @@ class App extends React.Component
 				const eventDate = new Date(event.start_date.replace(/-/g, '/'));  // current event starting date
 				const eventEndDate = event.end_date ? new Date(event.end_date.replace(/-/g, '/')) : null; // current event starting date
 				return (eventDate.getTime() === this.state.selectedDate.getTime());
-				//    return (eventDate >= currentDate || eventEndDate >= currentDate) && (eventDate < nextMonthDate || (eventEndDate && eventEndDate < nextMonthDate));
-// Push event into newEvents if event starting date is selected date OR (event ending date is after today AND event starting date is before today)                                    // Push event into newEvents if  (event starts OR event ends in this month ) AND (current event starting date is in this month OR (event ends before the month ends))
 			});
 		} else {
 			newEvents = events.filter(event => {
@@ -148,11 +201,13 @@ class App extends React.Component
 	};
 
 	handleDateClick = (year, month, date) => {
+		let selectedDate = new Date(year,month,date);
 		this.setState({
 			year: year,
 			month: month,
 			date: date,
-			selectedDate: new Date(year, month, date),
+			selectedDate: selectedDate,
+			daysWithEventsIndex: this.state.daysWithEvents.indexOf(selectedDate.toString()),
 		});
 	};
 
@@ -168,18 +223,18 @@ class App extends React.Component
 			else {
 				index = this.state.daysWithEventsIndex + 1;
 			}
-			nextSelectedDay = this.state.daysWithEvents[index];
+			nextSelectedDay = new Date(this.state.daysWithEvents[index]);
 			this.setState({daysWithEventsIndex: index});
 		}else{	// direction === 'prev'
 			if (this.state.daysWithEventsIndex === 0)
 			{
-				index = this.state.daysWithEvents;
+				index = this.state.daysWithEventsIndex;
 			}
 			else {
 				index = this.state.daysWithEventsIndex - 1;
 			}
 
-			nextSelectedDay = this.state.daysWithEvents[index];
+			nextSelectedDay = new Date(this.state.daysWithEvents[index]);
 			this.setState({daysWithEventsIndex: index})
 		}
 
@@ -189,6 +244,7 @@ class App extends React.Component
 		this.setState(
 			{
 				selectedDate: nextSelectedDay,
+				month: nextSelectedDay.getMonth(),
 				daysInMonth: daysInMonth,
 				firstOfMonth: firstOfMonth,
 				lastOfMonth: lastOfMonth,
@@ -204,8 +260,6 @@ class App extends React.Component
 	};
 
 	render() {
-		console.log(this.state.daysWithEventsIndex);
-		console.log(Array.from(this.state.daysWithEvents).length);
 		let appClassName ='app ' + this.state.currentCategory.slug + ' with-events' ;
 		let className;
 		this.state.toggleCalendar ? className = "events expanded" : className="events";
@@ -214,11 +268,12 @@ class App extends React.Component
 				<div className={appClassName}>
 						<div className={className}>
 
-							{dataIsLoaded&&	<Header
+							{dataIsLoaded &&	<Header
 								toggleCategories={this.toggleCategories}
 								setCategory={this.setCategory}
 								currentCategory={this.state.currentCategory}
 								catNavActive={this.state.catNavActive}
+								category={this.state.category}
 								/>}
 							{dataIsLoaded && <Calendar
 								year={this.state.year}
@@ -232,15 +287,13 @@ class App extends React.Component
 								events={this.state.events}
 								firstOfMonth={this.state.firstOfMonth}
 								daysInMonth={this.state.daysInMonth}
+								daysWithEvents={this.state.daysWithEvents}
 							/>}
 
 							{dataIsLoaded && <EventList
 							events={this.state.dayEvents}
 							mode="days"
 						/>}
-
-
-
 
 					</div>
 				</div>

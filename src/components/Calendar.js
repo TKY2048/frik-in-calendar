@@ -7,12 +7,10 @@ import CalendarDates from "../containers/CalendarDates";
 
 
 const Calendar = (props) => {
-	const calendarTitle = props.selectedDate.getDate()+ ' de ' + appConstants.monthNamesFull[props.month] + ' de ' + props.year;
+	const calendarTitle = props.selectedDate.getDate()+ ' de ' + appConstants.monthNamesFull[props.selectedDate.getMonth()] + ' de ' + props.year;
 	const haystack = Array.apply(null, { length: 7 }).map(Number.call, Number);
 	let cells;
 	const today = new Date(new Date().setHours(0,0,0,0));
-
-
 
 	cells = haystack.map((item, i) => {
 		return (
@@ -22,6 +20,8 @@ const Calendar = (props) => {
 		);
 	});
 
+	let firstDate = new Date(props.daysWithEvents[0]);
+	let lastDate = new Date(props.daysWithEvents.slice(-1)[0]);
 	return (
 		<div className="calendar">
 			<div className="calendar-inner">
@@ -29,13 +29,13 @@ const Calendar = (props) => {
 					title={calendarTitle}
 					onHeaderClick={props.onHeaderClick}
                               onDayChange={props.onDayChange}
-					first={today.getTime() === props.selectedDate.getTime()}
-					last={false}
+					first={firstDate.getTime() === props.selectedDate.getTime()}
+					last={lastDate.getTime() === props.selectedDate.getTime()}
 				/>
 				<CalendarDates
 					category={props.category}
 					year={props.year}
-					month={props.month}
+					month={props.selectedDate.getMonth()}
 					selectedDate={props.selectedDate}
 					firstOfMonth={props.firstOfMonth}
 					onDateClick={props.onDateClick}
