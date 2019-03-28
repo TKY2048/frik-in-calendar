@@ -41,8 +41,7 @@ class App extends React.Component
 	}
 	slugToCategory = slug => {
 		let category;
-
-		// TODO: Do this well. Use a mapping function maybe
+		
 		switch (slug) {
 			case 'main':
 				category = appConstants.categories[0];
@@ -70,22 +69,14 @@ class App extends React.Component
 		}
 		return category;
 	};
-
 	toggleCategories = () => {
 		this.setState(prevState => ({
 			catNavActive: !prevState.catNavActive
 		}));
 	};
-
 	setCategory = (category) => {
-		this.setState(
-			{
-				currentCategory: category,
-				category: category,
-			}
-		)
+	
 	};
-
 	getDaysWithEvents = () => {
 		let daysWithEvents = [];
 		let sortedDates;
@@ -173,27 +164,22 @@ class App extends React.Component
 
 		const currentCategory = this.state.category.slug;
 		const events = this.state.events;
-		const selectedMonth = this.state.month;                             // Currently selected month
-		const nextMonth = selectedMonth < 11 ? selectedMonth + 1 : 0;       // Next month to be selected
-		const selectedYear = this.state.year;                               // Year of the selected date
-		const nextYear = nextMonth === 0 ? selectedYear + 1 : selectedYear; // Year of the next selected month
-		const currentDate = new Date(selectedYear, selectedMonth, 1);       // First of the current month
-		const nextMonthDate = new Date(nextYear, nextMonth, 1);             // First of next month
-
 		let newEvents;                                                      // Array containing events filtered from events
+		let selectedDate = this.state.selectedDate.getTime();
 		if (currentCategory === 'main')
 		{
 			newEvents = events.filter(event => {
 				const eventDate = new Date(event.start_date.replace(/-/g, '/'));  // current event starting date
 				const eventEndDate = event.end_date ? new Date(event.end_date.replace(/-/g, '/')) : null; // current event starting date
-				return (eventDate.getTime() === this.state.selectedDate.getTime());
+				
+				return( (eventDate.getTime() === selectedDate) || (eventDate < selectedDate && eventEndDate > selectedDate));
+				//return (eventDate.getTime() === selectedDate);
 			});
 		} else {
 			newEvents = events.filter(event => {
 				const eventDate = new Date(event.start_date.replace(/-/g, '/'));
 				const eventEndDate = event.end_date ? new Date(event.end_date.replace(/-/g, '/')) : null;
-				//return eventDate >= currentDate && (eventDate < nextMonthDate || (eventEndDate && eventEndDate < nextMonthDate)) && event.categories.find(cat => cat === currentCategory);
-				return (eventDate.getTime() === this.state.selectedDate.getTime() && event.categories.find(cat => cat === currentCategory));
+				return ( (eventDate.getTime() === selectedDate) || (eventDate < selectedDate && eventEndDate > selectedDate) && event.categories.find(cat => cat === currentCategory));
 			});
 		}
 		newEvents = sortEvents(newEvents);

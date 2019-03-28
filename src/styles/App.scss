@@ -1215,7 +1215,6 @@ form {
   }
 }
 
-
 /* ========== LAYOUT: DESKTOP ========== */
 
 /* EVENTS */
@@ -1297,7 +1296,7 @@ form {
   .events {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 132px 1fr;
+    grid-template-rows: 132px 500px;
     padding-top: 0;
     transition: $quick;
 

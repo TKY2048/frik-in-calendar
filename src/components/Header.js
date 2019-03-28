@@ -30,10 +30,12 @@ const Header = (props) => {
 
 		return(
 			<header className="app-header">
-				<a href="https://www.frik-in.com" className="logo-button"  style={{ backgroundColor: navButtonColor }}>
+				<a href="https://www.frik-in.com" target="_blank" className="logo-button"  style={{ backgroundColor: navButtonColor }}>
 					{navButton}
 				</a>
-				<CategoriesNav initialCategory={props.category.slug} currentCategory={props.category} active={false} toggleCategories={()=>null} setCategory={()=>null}/>
+				<a href="https://www.frik-in.com" target="_blank">
+					<CategoriesNav initialCategory={props.category.slug} currentCategory={props.category} active={false} toggleCategories={()=>null} setCategory={()=>null}/>
+				</a>
 				<h1 className="page-title">{headerTitle}</h1>
 			</header>
 		);
