@@ -30,7 +30,6 @@ class CalendarDates extends Component {
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		if (prevProps.month !== this.props.month) {
-			console.log("getting month events");
 			this.setState(
 				{
 					events: this.getMonthEvents(this.props.events),

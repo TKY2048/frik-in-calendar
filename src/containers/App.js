@@ -172,14 +172,14 @@ class App extends React.Component
 				const eventDate = new Date(event.start_date.replace(/-/g, '/'));  // current event starting date
 				const eventEndDate = event.end_date ? new Date(event.end_date.replace(/-/g, '/')) : null; // current event starting date
 				
-				return( (eventDate.getTime() === selectedDate) || (eventDate < selectedDate && eventEndDate > selectedDate));
+				return( (eventDate.getTime() === selectedDate) || (eventDate < selectedDate && eventEndDate >= selectedDate));
 				//return (eventDate.getTime() === selectedDate);
 			});
 		} else {
 			newEvents = events.filter(event => {
 				const eventDate = new Date(event.start_date.replace(/-/g, '/'));
 				const eventEndDate = event.end_date ? new Date(event.end_date.replace(/-/g, '/')) : null;
-				return ( (eventDate.getTime() === selectedDate) || (eventDate < selectedDate && eventEndDate > selectedDate) && event.categories.find(cat => cat === currentCategory));
+				return ( ((eventDate.getTime() === selectedDate) || (eventDate < selectedDate && eventEndDate >= selectedDate)) && event.categories.find(cat => cat === currentCategory));
 			});
 		}
 		newEvents = sortEvents(newEvents);
@@ -279,6 +279,7 @@ class App extends React.Component
 							{dataIsLoaded && <EventList
 							events={this.state.dayEvents}
 							mode="days"
+							selectedDate={this.state.selectedDate}
 						/>}
 
 					</div>
